@@ -30,6 +30,24 @@ function App() {
     "Z",
   ];
 
+  const getWord = async () => {
+    const response = await fetch(
+      "https://random-words5.p.rapidapi.com/getRandom",
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "b58fc1a139msh8ebf180a4c175a2p12fd02jsn7c7bdfecac08",
+          "X-RapidAPI-Host": "random-words5.p.rapidapi.com",
+        },
+      }
+    );
+
+    const data = await response.text();
+
+    return data;
+  };
+
   return (
     <div className="w-full h-screen bg-slate-700 flex flex-col justify-center items-center">
       {/* Hangman section */}
