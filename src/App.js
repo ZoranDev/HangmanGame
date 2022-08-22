@@ -1,6 +1,9 @@
 import Letter from "./components/Letter";
+import { useState, useEffect } from "react";
 
 function App() {
+  // State for word to find
+  const [wordToFind, setWordToFind] = useState("");
   const letters = [
     "A",
     "B",
@@ -45,8 +48,12 @@ function App() {
 
     const data = await response.text();
 
-    return data;
+    setWordToFind(data);
   };
+
+  useEffect(() => {
+    getWord();
+  }, []);
 
   return (
     <div className="w-full h-screen bg-slate-700 flex flex-col justify-center items-center">
