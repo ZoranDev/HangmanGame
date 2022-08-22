@@ -36,10 +36,10 @@ function App() {
       <div className="w-3/4 h-4/6 bg-transparent mb-5 border-2 border-white flex flex-col items-center justify-center">
         {/* Hangling pole */}
         <div className="w-72 h-80 relative">
-          <div className="w-5 h-80 bg-white absolute top-0 left-0"></div>
-          <div className="w-40 h-5 bg-white absolute top-0 left-0"></div>
+          <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
+          <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
           {/* Rope */}
-          <div className="w-4 h-12 bg-white absolute top-0 left-40"></div>
+          <div className="w-4 h-12 bg-white absolute top-0 right-28"></div>
           {/* Head */}
           <div className="w-24 h-24 bg-transparent absolute top-10 left-28 border-8 border-white rounded-full"></div>
           {/* Body */}
