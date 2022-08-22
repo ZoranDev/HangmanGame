@@ -65,8 +65,6 @@ function App() {
     getWord();
   }, []);
 
-  //Turn word in array
-
   return (
     <div className="w-full h-screen bg-slate-700 flex flex-col justify-center items-center">
       {/* Hangman section */}
@@ -92,7 +90,12 @@ function App() {
         </div>
 
         {/* Missing word */}
-        <div></div>
+        <div className="flex justify-center items-center">
+          {wordToFind &&
+            wordToFind.wordArray.map((letter, index) => (
+              <MissingLetter key={index} letter={letter} />
+            ))}
+        </div>
       </div>
 
       {/* Letters section */}
