@@ -1,9 +1,13 @@
 import Letter from "./components/Letter";
+import MissingLetter from "./components/MissingLetter";
 import { useState, useEffect } from "react";
 
 function App() {
   // State for word to find
-  const [wordToFind, setWordToFind] = useState("");
+  const [wordToFind, setWordToFind] = useState({
+    word: "",
+    wordArray: [],
+  });
   const letters = [
     "A",
     "B",
@@ -48,18 +52,26 @@ function App() {
 
     const data = await response.text();
 
-    setWordToFind(data);
+    let wordToFindArr = [];
+
+    for (let i = 0; i < data.length; i++) {
+      wordToFindArr.push(data[i]);
+    }
+
+    setWordToFind({ wordArray: wordToFindArr, word: data });
   };
 
   useEffect(() => {
     getWord();
   }, []);
 
+  //Turn word in array
+
   return (
     <div className="w-full h-screen bg-slate-700 flex flex-col justify-center items-center">
       {/* Hangman section */}
       <div className="w-3/4 h-4/6 bg-transparent mb-5 border-2 border-white flex flex-col items-center justify-center">
-        {/* Hangling pole */}
+        {/* Hanging pole */}
         <div className="w-72 h-80 relative">
           <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
           <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
@@ -78,6 +90,9 @@ function App() {
           {/* Right leg */}
           <div className="w-2 h-24 bg-white absolute top-56 left-48 -rotate-45"></div>
         </div>
+
+        {/* Missing word */}
+        <div></div>
       </div>
 
       {/* Letters section */}
