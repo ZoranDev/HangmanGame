@@ -12,37 +12,72 @@ export const HangmanProvider = ({ children }) => {
     wordArray: [],
   });
 
+  // State for number of mistakes
+  const [numberOfMistakes, setNumberOfMistakes] = useState(0);
+
+  // State for number of wins
+  const [numberOfWins, setNumberOfWins] = useState(0);
+
   //Get random word
   useEffect(() => {
+    getRandomWord();
+  }, []);
+
+  // Get random word
+  const getRandomWord = () => {
     let word = words[Math.floor(Math.random() * words.length)];
     const arr = [];
     for (let i = 0; i < word.length; i++) {
       arr.push({ letter: word[i], class: "inactive" });
     }
     setWordToFind({ actualWord: word, wordArray: arr });
-  }, []);
+  };
 
-  //clickOnLetter
+  //clickOnLetter function
   const clickOnLetter = (letter, e) => {
+    // indicator that we do not have clicked letter in our missing word
+    let isLetter = false;
+
+    // Print in missing word section letter if it is clicked letter
     setWordToFind({
       ...wordToFind,
       wordArray: wordToFind.wordArray.map((item) => {
         if (item.letter.toLowerCase() === letter.toLowerCase()) {
           item.class = "active";
+          isLetter = true;
+          setNumberOfWins(numberOfWins + 1);
         }
         return item;
       }),
     });
 
+    if (!isLetter) {
+      setNumberOfMistakes(numberOfMistakes + 1);
+    }
+
+    // Change background for clicked letter
     e.target.className =
       "w-12 h-12 bg-slate-800 text-black mr-2 mb-2 text-lg flex justify-center items-center border-2 border-white";
+
+    // Disable clicked letter
+    e.target.disabled = true;
+  };
+
+  //playAgain function
+  const playAgain = () => {
+    setNumberOfMistakes(0);
+    setNumberOfWins(0);
+    getRandomWord();
   };
 
   return (
     <HangmanContext.Provider
       value={{
         wordToFind,
+        numberOfMistakes,
+        numberOfWins,
         clickOnLetter,
+        playAgain,
       }}
     >
       {children}

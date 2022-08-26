@@ -1,48 +1,122 @@
 import { useContext } from "react";
 import HangmanContext from "../context/HangmanContext";
+import { FaPlay } from "react-icons/fa";
 // Components
 import MissingLetter from "../components/MissingLetter";
+import AllLetters from "../components/AllLetters";
 
 const Hangman = () => {
-  const { wordToFind } = useContext(HangmanContext);
+  const { wordToFind, numberOfMistakes, numberOfWins, playAgain } =
+    useContext(HangmanContext);
 
-  return (
-    <div className="w-3/4 h-4/6 bg-transparent mb-5 border-2 border-white flex flex-col items-center justify-center">
-      {/* Hanging pole */}
-      <div className="w-72 h-80 relative">
-        <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
-        <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
-        {/* Rope */}
-        <div className="w-4 h-12 bg-white absolute top-0 right-28"></div>
-        {/* Head */}
-        <div className="w-24 h-24 bg-transparent absolute top-10 left-28 border-8 border-white rounded-full"></div>
-        {/* Body */}
-        <div className="w-2 h-28 bg-white absolute top-32 left-40"></div>
-        {/* Left arm */}
-        <div className="w-2 h-24 bg-white absolute top-32 left-32 rotate-45"></div>
-        {/* Right arm */}
-        <div className="w-2 h-24 bg-white absolute top-32 left-48 -rotate-45"></div>
-        {/* Left leg */}
-        <div className="w-2 h-24 bg-white absolute top-56 left-32 rotate-45"></div>
-        {/* Right leg */}
-        <div className="w-2 h-24 bg-white absolute top-56 left-48 -rotate-45"></div>
-      </div>
+  if (numberOfMistakes < 6 && numberOfWins < wordToFind.actualWord.length) {
+    return (
+      <div className="w-3/4 h-5/6 bg-transparent border-2 border-white flex items-center justify-between">
+        {/* Letters side */}
 
-      {/* Missing word */}
-      <div className="flex justify-center items-center">
-        {wordToFind.actualWord &&
-          wordToFind.wordArray.map((item, index) => {
-            return (
-              <MissingLetter
-                key={index}
-                letter={item.letter}
-                active={item.class}
-              />
-            );
-          })}
+        <AllLetters />
+
+        {/* Hanging  pole and word to find */}
+        <div className="w-4/6 flex flex-col items-center p-5 ">
+          {/* Hanging pole */}
+          <div className="w-72 h-80 relative">
+            <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
+            <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
+            {/* Rope */}
+            <div className="w-4 h-12 bg-white absolute top-0 right-28"></div>
+            {/* Head */}
+            <div
+              className={
+                numberOfMistakes > 0
+                  ? "w-24 h-24 bg-transparent absolute top-10 left-28 border-8 border-white rounded-full"
+                  : "hidden"
+              }
+            ></div>
+            {/* Body */}
+            <div
+              className={
+                numberOfMistakes > 1
+                  ? "w-2 h-28 bg-white absolute top-32 left-40"
+                  : "hidden"
+              }
+            ></div>
+            {/* Left arm */}
+            <div
+              className={
+                numberOfMistakes > 2
+                  ? "w-2 h-24 bg-white absolute top-32 left-32 rotate-45"
+                  : "hidden"
+              }
+            ></div>
+            {/* Right arm */}
+            <div
+              className={
+                numberOfMistakes > 3
+                  ? "w-2 h-24 bg-white absolute top-32 left-48 -rotate-45"
+                  : "hidden"
+              }
+            ></div>
+            {/* Left leg */}
+            <div
+              className={
+                numberOfMistakes > 4
+                  ? "w-2 h-24 bg-white absolute top-56 left-32 rotate-45"
+                  : "hidden"
+              }
+            ></div>
+            {/* Right leg */}
+            <div
+              className={
+                numberOfMistakes > 5
+                  ? "w-2 h-24 bg-white absolute top-56 left-48 -rotate-45"
+                  : "hidden"
+              }
+            ></div>
+          </div>
+
+          {/* Missing word */}
+          <div className="flex justify-center items-center">
+            {wordToFind.actualWord &&
+              wordToFind.wordArray.map((item, index) => {
+                return (
+                  <MissingLetter
+                    key={index}
+                    letter={item.letter}
+                    active={item.class}
+                  />
+                );
+              })}
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="w-80  border-2 border-white rounded p-5 flex flex-col items-center">
+        {numberOfMistakes === 6 && (
+          <>
+            <h1 className="mb-5 text-3xl text-red-500">GAME OVER</h1>
+            <h2 className="text-xl text-white mb-5">
+              The word was:
+              <span className="text-xl text-red pl-5">
+                {wordToFind.actualWord.toUpperCase()}
+              </span>{" "}
+            </h2>
+          </>
+        )}
+        {numberOfWins === wordToFind.actualWord.length && (
+          <h1 className="mb-5 text-3xl text-green-500">GAME WIN</h1>
+        )}
+
+        <button
+          onClick={() => playAgain()}
+          className="w-full p-3 bg-neutral-200 rounded text-2xl text-slate-700 flex items-center justify-center active:scale-95"
+        >
+          Play Again <FaPlay className="ml-4" />
+        </button>
+      </div>
+    );
+  }
 };
 
 export default Hangman;
