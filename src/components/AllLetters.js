@@ -1,6 +1,3 @@
-import HangmanContext from "../context/HangmanContext";
-import { useContext } from "react";
-
 // Components
 import Letter from "./Letter";
 
@@ -34,9 +31,6 @@ const AllLetters = () => {
     "Y",
     "Z",
   ];
-
-  // Context stuff
-  const {} = useContext(HangmanContext);
 
   return (
     <div className="w-3/4 flex justify-center items-center flex-wrap">

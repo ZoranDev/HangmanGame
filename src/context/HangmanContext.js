@@ -22,12 +22,16 @@ export const HangmanProvider = ({ children }) => {
     setWordToFind({ actualWord: word, wordArray: arr });
   }, []);
 
-  console.log(wordToFind);
+  //clickOnLetter
+  const clickOnLetter = (letter) => {
+    console.log(letter);
+  };
 
   return (
     <HangmanContext.Provider
       value={{
         wordToFind,
+        clickOnLetter,
       }}
     >
       {children}
