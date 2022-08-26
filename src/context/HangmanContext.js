@@ -36,3 +36,32 @@ export const HangmanProvider = ({ children }) => {
 };
 
 export default HangmanContext;
+
+// api for random word
+/* const getWord = async () => {
+    const response = await fetch(
+      "https://random-words5.p.rapidapi.com/getRandom",
+      {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "b58fc1a139msh8ebf180a4c175a2p12fd02jsn7c7bdfecac08",
+          "X-RapidAPI-Host": "random-words5.p.rapidapi.com",
+        },
+      }
+    );
+
+    const data = await response.text();
+
+    let wordToFindArr = [];
+
+    for (let i = 0; i < data.length; i++) {
+      wordToFindArr.push(data[i]);
+    }
+
+    setWordToFind({ wordArray: wordToFindArr, word: data });
+  }; */
+
+/*  useEffect(() => {
+    getWord();
+  }, []); */
