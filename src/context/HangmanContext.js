@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const HangmanContext = createContext();
 
@@ -7,7 +7,12 @@ export const HangmanProvider = ({ children }) => {
   const words = ["plane", "car", "music", "house", "hangman"];
 
   // State for wordToFind
-  const [wordToFind, setWordToFind] = useState("ZORAN");
+  const [wordToFind, setWordToFind] = useState("");
+
+  //Get random word
+  useEffect(() => {
+    setWordToFind(words[Math.floor(Math.random() * words.length)]);
+  }, []);
 
   return (
     <HangmanContext.Provider
