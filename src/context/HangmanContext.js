@@ -24,7 +24,15 @@ export const HangmanProvider = ({ children }) => {
 
   //clickOnLetter
   const clickOnLetter = (letter) => {
-    console.log(letter);
+    setWordToFind({
+      ...wordToFind,
+      wordArray: wordToFind.wordArray.map((item) => {
+        if (item.letter.toLowerCase() === letter.toLowerCase()) {
+          item.class = "active";
+        }
+        return item;
+      }),
+    });
   };
 
   return (
