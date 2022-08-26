@@ -23,7 +23,7 @@ export const HangmanProvider = ({ children }) => {
   }, []);
 
   //clickOnLetter
-  const clickOnLetter = (letter) => {
+  const clickOnLetter = (letter, e) => {
     setWordToFind({
       ...wordToFind,
       wordArray: wordToFind.wordArray.map((item) => {
@@ -33,6 +33,9 @@ export const HangmanProvider = ({ children }) => {
         return item;
       }),
     });
+
+    e.target.className =
+      "w-12 h-12 bg-slate-800 text-black mr-2 mb-2 text-lg flex justify-center items-center border-2 border-white";
   };
 
   return (

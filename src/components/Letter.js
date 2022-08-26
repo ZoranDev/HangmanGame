@@ -7,7 +7,7 @@ const Letter = ({ letter }) => {
 
   return (
     <div
-      onClick={() => clickOnLetter(letter)}
+      onClick={(e) => clickOnLetter(letter, e)}
       className="w-12 h-12 bg-transparent text-white mr-2 mb-2 text-lg flex justify-center items-center border-2 border-white cursor-pointer hover:bg-slate-500"
     >
       {letter}
