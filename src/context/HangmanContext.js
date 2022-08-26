@@ -7,12 +7,22 @@ export const HangmanProvider = ({ children }) => {
   const words = ["plane", "car", "music", "house", "hangman"];
 
   // State for wordToFind
-  const [wordToFind, setWordToFind] = useState("");
+  const [wordToFind, setWordToFind] = useState({
+    actualWord: "",
+    wordArray: [],
+  });
 
   //Get random word
   useEffect(() => {
-    setWordToFind(words[Math.floor(Math.random() * words.length)]);
+    let word = words[Math.floor(Math.random() * words.length)];
+    const arr = [];
+    for (let i = 0; i < word.length; i++) {
+      arr.push({ letter: word[i], class: "inactive" });
+    }
+    setWordToFind({ actualWord: word, wordArray: arr });
   }, []);
+
+  console.log(wordToFind);
 
   return (
     <HangmanContext.Provider
