@@ -33,7 +33,7 @@ const AllLetters = () => {
   ];
 
   return (
-    <div className="w-64 flex justify-center items-center flex-wrap">
+    <div className="w-64 sm:w-full lg:w-64 flex justify-center items-center flex-wrap">
       {letters.map((letter, index) => (
         <Letter key={index} letter={letter} />
       ))}

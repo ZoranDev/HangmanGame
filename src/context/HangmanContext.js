@@ -4,7 +4,7 @@ const HangmanContext = createContext();
 
 export const HangmanProvider = ({ children }) => {
   // Here get word by fetch api, now just as array of word
-  const words = ["plane", "car", "music", "house", "hangman"];
+  const words = ["plane", "car", "music", "house", "hangman", "ambulance"];
 
   // State for wordToFind
   const [wordToFind, setWordToFind] = useState({
@@ -37,19 +37,22 @@ export const HangmanProvider = ({ children }) => {
   const clickOnLetter = (letter, e) => {
     // indicator that we do not have clicked letter in our missing word
     let isLetter = false;
+    let wins = 0;
 
     // Print in missing word section letter if it is clicked letter
     setWordToFind({
       ...wordToFind,
       wordArray: wordToFind.wordArray.map((item) => {
         if (item.letter.toLowerCase() === letter.toLowerCase()) {
+          wins = wins + 1;
           item.class = "active";
           isLetter = true;
-          setNumberOfWins(numberOfWins + 1);
         }
         return item;
       }),
     });
+
+    setNumberOfWins(numberOfWins + wins);
 
     if (!isLetter) {
       setNumberOfMistakes(numberOfMistakes + 1);

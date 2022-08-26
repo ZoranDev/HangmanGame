@@ -9,21 +9,23 @@ const Hangman = () => {
   const { wordToFind, numberOfMistakes, numberOfWins, playAgain } =
     useContext(HangmanContext);
 
+  console.log(wordToFind.actualWord.length, numberOfWins);
+
   if (numberOfMistakes < 6 && numberOfWins < wordToFind.actualWord.length) {
     return (
-      <div className="w-3/4 h-5/6 bg-transparent border-2 border-white flex items-center justify-between">
+      <div className="w-full sm:w-full sm:h-full lg:w-5/6 lg:h-5/6 bg-transparent p-5 border-2 border-white flex flex-col-reverse lg:flex-row items-center justify-between">
         {/* Letters side */}
 
         <AllLetters />
 
         {/* Hanging  pole and word to find */}
-        <div className="w-4/6 flex flex-col items-center p-5 ">
+        <div className="w-full  sm:w-4/6 mb-5 sm:mb-0 flex flex-col items-center sm:p-5">
           {/* Hanging pole */}
-          <div className="w-72 h-80 relative">
+          <div className="w-64 h-96 sm:h-80 relative">
             <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
             <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
             {/* Rope */}
-            <div className="w-4 h-12 bg-white absolute top-0 right-28"></div>
+            <div className="w-4 h-12 bg-white absolute top-0 left-40"></div>
             {/* Head */}
             <div
               className={
