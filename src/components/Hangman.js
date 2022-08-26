@@ -36,7 +36,7 @@ const Hangman = () => {
               <MissingLetter
                 key={index}
                 letter={item.letter}
-                class={item.class}
+                active={item.class}
               />
             );
           })}
