@@ -30,7 +30,16 @@ const Hangman = () => {
 
       {/* Missing word */}
       <div className="flex justify-center items-center">
-        <h1>Here go missing word</h1>
+        {wordToFind.actualWord &&
+          wordToFind.wordArray.map((item, index) => {
+            return (
+              <MissingLetter
+                key={index}
+                letter={item.letter}
+                class={item.class}
+              />
+            );
+          })}
       </div>
     </div>
   );
