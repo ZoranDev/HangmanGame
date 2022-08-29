@@ -9,8 +9,6 @@ const Hangman = () => {
   const { wordToFind, numberOfMistakes, numberOfWins, playAgain } =
     useContext(HangmanContext);
 
-  console.log(wordToFind.actualWord.length, numberOfWins);
-
   if (numberOfMistakes < 6 && numberOfWins < wordToFind.actualWord.length) {
     return (
       <div className="w-full sm:w-full sm:h-full lg:w-5/6 lg:h-5/6 bg-transparent p-5 border-2 border-white flex flex-col-reverse lg:flex-row items-center justify-between">
@@ -97,22 +95,23 @@ const Hangman = () => {
       <div className="w-80  border-2 border-white rounded p-5 flex flex-col items-center">
         {numberOfMistakes === 6 && (
           <>
-            <h1 className="mb-5 text-3xl text-red-500">GAME OVER</h1>
-            <h2 className="text-xl text-white mb-5">
-              The word was:
-              <span className="text-xl text-red pl-5">
+            <h1 className="mb-5 text-3xl text-red-500 font-bold">GAME OVER</h1>
+            <h2 className="text-xl text-white mb-5 pr-5">
+              The word was: "
+              <span className="text-xl text-red">
                 {wordToFind.actualWord.toUpperCase()}
-              </span>{" "}
+              </span>
+              "
             </h2>
           </>
         )}
         {numberOfWins === wordToFind.actualWord.length && (
-          <h1 className="mb-5 text-3xl text-green-500">GAME WIN</h1>
+          <h1 className="mb-5 text-3xl text-green-500 font-bold">GAME WIN</h1>
         )}
 
         <button
           onClick={() => playAgain()}
-          className="w-full p-3 bg-neutral-200 rounded text-2xl text-slate-700 flex items-center justify-center active:scale-95"
+          className="w-full p-3 bg-neutral-200 rounded text-2xl  text-slate-700 flex items-center justify-center active:scale-95 hover:bg-neutral-100 "
         >
           Play Again <FaPlay className="ml-4" />
         </button>
