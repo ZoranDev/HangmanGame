@@ -31,7 +31,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 0
-                  ? "w-24 h-24 bg-transparent absolute top-10 left-28 border-8 border-white rounded-full"
+                  ? "w-24 h-24 bg-transparent absolute top-10 left-28 border-8 border-white rounded-full animate-showBodyPart "
                   : "hidden"
               }
             ></div>
@@ -39,7 +39,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 1
-                  ? "w-2 h-28 bg-white absolute top-32 left-40"
+                  ? "w-2 h-28 bg-white absolute top-32 left-40 animate-showBodyPart"
                   : "hidden"
               }
             ></div>
@@ -47,7 +47,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 2
-                  ? "w-2 h-24 bg-white absolute top-32 left-32 rotate-45"
+                  ? "w-2 h-24 bg-white absolute top-32 left-32 rotate-45 animate-showBodyPart"
                   : "hidden"
               }
             ></div>
@@ -55,7 +55,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 3
-                  ? "w-2 h-24 bg-white absolute top-32 left-48 -rotate-45"
+                  ? "w-2 h-24 bg-white absolute top-32 left-48 -rotate-45 animate-showBodyPart"
                   : "hidden"
               }
             ></div>
@@ -63,7 +63,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 4
-                  ? "w-2 h-24 bg-white absolute top-56 left-32 rotate-45"
+                  ? "w-2 h-24 bg-white absolute top-56 left-32 rotate-45 animate-showBodyPart"
                   : "hidden"
               }
             ></div>
@@ -71,7 +71,7 @@ const Hangman = () => {
             <div
               className={
                 numberOfMistakes > 5
-                  ? "w-2 h-24 bg-white absolute top-56 left-48 -rotate-45"
+                  ? "w-2 h-24 bg-white absolute top-56 left-48 -rotate-45 animate-showBodyPart"
                   : "hidden"
               }
             ></div>

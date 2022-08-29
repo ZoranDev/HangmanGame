@@ -9,6 +9,15 @@ module.exports = {
       backgroundImage: {
         background: "url('/src/images/background.jpg')",
       },
+      keyframes: {
+        showBodyPart: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        showBodyPart: "showBodyPart 1s ease-in-out",
+      },
     },
   },
   plugins: [],
