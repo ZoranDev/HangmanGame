@@ -11,7 +11,7 @@ const Hangman = () => {
 
   if (numberOfMistakes < 6 && numberOfWins < wordToFind.actualWord.length) {
     return (
-      <div className="w-full sm:w-full sm:h-full lg:w-5/6 lg:h-5/6 bg-transparent p-5 border-2 border-white flex flex-col-reverse lg:flex-row items-center justify-between">
+      <div className="w-full sm:w-full sm:h-full lg:w-5/6 lg:h-5/6  p-5 border-2 border-white flex flex-col-reverse lg:flex-row items-center justify-evenly">
         {/* Letters side */}
 
         <AllLetters />
