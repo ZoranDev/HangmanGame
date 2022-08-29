@@ -23,7 +23,7 @@ const Hangman = () => {
             <div className="w-3 h-80 bg-white absolute top-0 left-0"></div>
             <div className="w-40 h-3 bg-white absolute top-0 left-0"></div>
             {/* Rope */}
-            <div className="w-4 h-12 bg-white absolute top-0 left-40"></div>
+            <div className="w-4 h-12 bg-white absolute top-0 left-37"></div>
             {/* Head */}
             <div
               className={
