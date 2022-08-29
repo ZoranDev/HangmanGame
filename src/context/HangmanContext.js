@@ -60,7 +60,7 @@ export const HangmanProvider = ({ children }) => {
 
     // Change background for clicked letter
     e.target.className =
-      "w-12 h-12 bg-slate-800 text-black mr-2 mb-2 text-lg flex justify-center items-center border-2 border-white";
+      "w-12 h-12 bg-red-500 text-white mr-2 mb-2 text-lg flex justify-center items-center border-2 border-white";
 
     // Disable clicked letter
     e.target.disabled = true;
